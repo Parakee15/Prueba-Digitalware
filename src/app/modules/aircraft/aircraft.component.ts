@@ -37,11 +37,6 @@ export class AircraftComponent implements OnInit {
       if (res.data.length == 0) this.addRow();
     }, (err) => {
       console.log('err :>> ', err);
-      // this._alertService.openSwal({
-      //   title: 'Error',
-      //   text: 'Ocurrio un error consultando las Aeronaves',
-      //   icon: 'error'
-      // });
     });
   }
 
@@ -80,11 +75,6 @@ export class AircraftComponent implements OnInit {
         icon: 'success',
       });
     }, (err) => {
-      // this._alertService.openSwal({
-      //   title: 'Error',
-      //   text: 'Ocurrio un error editando la Aeronave',
-      //   icon: 'warning',
-      // });
     });
   }
 
@@ -117,11 +107,6 @@ export class AircraftComponent implements OnInit {
             icon: 'success',
           });
         }, (err) => {
-          // this._alertService.openSwal({
-          //   title: 'Error',
-          //   text: 'Ocurrio un error eliminando la Aeronave',
-          //   icon: 'warning',
-          // });
         });
       }
     });
@@ -143,21 +128,6 @@ export class AircraftComponent implements OnInit {
         icon: 'success',
       });
     }, (err) => {
-      // if (err?.status == 300) {
-      //   console.log('err :>> ', err);
-      //   this._alertService.openSwal({
-      //     title: 'Error',
-      //     text: err.error.error,
-      //     icon: 'warning',
-      //   });
-      //   return;
-      // }
-
-      // this._alertService.openSwal({
-      //   title: 'Error',
-      //   text: 'Ocurrio un error Guardando la Aeronave',
-      //   icon: 'warning',
-      // });
     });
   }
 }

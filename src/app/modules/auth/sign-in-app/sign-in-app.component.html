@@ -1,0 +1,37 @@
+<div class="card">
+    <div class="card-header">
+        <h2>Registra usuarios</h2>
+    </div>
+    <div class="card-body">
+        <form (ngSubmit)="onSubmit()" [formGroup]="formSignIn">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Usuario</label>
+                        <input type="text" class="form-control" formControlName="username">
+                        <app-form-control-error formControlName="username"></app-form-control-error>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Contraseña</label>
+                        <input type="password" class="form-control" formControlName="password">
+                        <app-form-control-error formControlName="password"></app-form-control-error>
+                    </div>
+                </div>
+            </div>
+            <div class="row pt-3">
+                <div class="col-md-12">
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row pt-3">
+                <div class="col-md-12 ">
+                    <a [routerLink]="['/authentication/login']">Inicia sesión</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

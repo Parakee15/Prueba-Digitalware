@@ -23,7 +23,7 @@ export class SidebarComponent implements OnInit {
     {
       state: 'aircraft',
       name: 'Aeronaves',
-      roles: ['ROLE_ADMIN', 'ROLE_USER']
+      roles: ['ROLE_ADMIN']
     },
     {
       state: 'rentals',

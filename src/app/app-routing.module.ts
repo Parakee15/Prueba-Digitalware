@@ -42,7 +42,7 @@ const routes: Routes = [
         path: 'aircraft',
         loadChildren: () => import('./modules/aircraft/aircraft.module').then(m => m.AircraftModule),
         data: {
-          roles: ['ROLE_ADMIN', 'ROLE_USER']
+          roles: ['ROLE_ADMIN']
         }
       }, {
         canLoad: [AuthGuard],

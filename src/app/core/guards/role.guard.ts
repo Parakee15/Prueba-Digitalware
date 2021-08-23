@@ -25,7 +25,7 @@ export class RoleGuard implements CanLoad {
           break;
 
         default:
-          this._router.navigate(['/aircraft']);
+          this._router.navigate(['/rentals']);
           break;
       }
     }

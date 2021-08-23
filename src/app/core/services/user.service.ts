@@ -26,4 +26,8 @@ export class UserService {
     return this._httpClient.get(`${ENV.API.USERS}`, { headers: this.httpHeaders });
   }
 
+  public save(data: any): Observable<any> {
+    return this._httpClient.post(`${ENV.API.USERS}`, data, { headers: this.httpHeaders });
+  }
+
 }
