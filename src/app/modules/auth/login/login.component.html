@@ -1,0 +1,45 @@
+<div class="container-fluid min-vh-100 ">
+    <div class="row d-flex min-vh-100 justify-content-center align-items-center">
+        <div class="col-md-3">
+            <div class="card shadow">
+                <div class="position-relative">
+                    <div class="position-absolute top-0 start-50 translate-middle ">
+                        <div class="bg-primary rounded-circle shadow">
+                            <i class="fas fa-user fa-3x text-secondary m-3"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body bg-f4f4f4">
+                    <form class="pt-3" [formGroup]="formLogin" (ngSubmit)="onSubmit()">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="">Usuario</label>
+                                    <input type="text" class="form-control" formControlName="username">
+                                    <app-form-control-error formControlName="username"></app-form-control-error>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row pt-2">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="">Contraseña</label>
+                                    <input type="password" class="form-control" formControlName="password">
+                                    <app-form-control-error formControlName="password"></app-form-control-error>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row pt-3">
+                            <div class="col-md-12">
+                                <div class="d-flex justify-content-center">
+                                    <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

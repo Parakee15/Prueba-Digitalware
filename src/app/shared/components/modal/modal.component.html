@@ -1,0 +1,24 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" [hidden]="true" data-bs-toggle="modal" [id]="'openModalButton'+idModal"
+    [attr.data-bs-target]="'#exampleModal'+idModal"></button>
+
+<!-- Modal -->
+<div class="modal fade" [id]="'exampleModal'+idModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <ng-content select="[modalHeader]"></ng-content>
+                <button type="button" [id]="'closeModalButton'+idModal" class="btn-close" data-bs-dismiss="modal"
+                    aria-label="Close">
+                </button>
+            </div>
+            <div class="modal-body">
+                <ng-content select="[modalBody]"></ng-content>
+            </div>
+            <div class="modal-footer">
+                <ng-content select="[modalFooter]"></ng-content>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,141 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="formRent">
+    <div class="card  bg-f4f4f4">
+        <div class="card-header">
+            <h2>Alquila tu Aeronave</h2>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-2 border-end">
+                    <div class="form-group input-search ">
+                        <label class="ps-4">Ubicación</label>
+                        <input type="text" class="form-control" formControlName="location" placeholder="¿A donde vas?">
+                        <app-form-control-error formControlName="location"></app-form-control-error>
+                    </div>
+                </div>
+                <div class="col-md-2 border-end">
+                    <label class="ps-4">Salida</label>
+                    <div class="form-group input-search ">
+                        <input type="text" class="form-control" formControlName="arrivalDate" placeholder="Agrega fecha"
+                            readonly (click)="pickerArrival.open()" [matDatepicker]="pickerArrival">
+                        <mat-datepicker #pickerArrival></mat-datepicker>
+                        <app-form-control-error formControlName="arrivalDate"> </app-form-control-error>
+                    </div>
+                </div>
+                <div class="col-md-2 border-end">
+                    <label class="ps-4">Llegada</label>
+                    <div class="form-group input-search">
+                        <input type="text" class="form-control" formControlName="desnitationDate"
+                            placeholder="Agrega fecha" readonly (click)="pickerDestination.open()"
+                            [matDatepicker]="pickerDestination">
+                        <mat-datepicker #pickerDestination></mat-datepicker>
+                        <app-form-control-error formControlName="desnitationDate"></app-form-control-error>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group input-search ">
+                        <label class="ps-4">Pasajeros</label>
+                        <input type="text" class="form-control" formControlName="passenger"
+                            placeholder="Agrega pasajeros" readonly (click)="modalPassengers.show()">
+                        <app-form-control-error formControlName="passenger"></app-form-control-error>
+                    </div>
+                </div>
+                <div class="col-md-1 p-0 border-end">
+                    <button class="btn btn-icon btn-search" type="button" (click)="modalPassengers.show()">
+                        <i class="fas fa-search fa-2x "></i>
+                    </button>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group input-search ">
+                        <label class="ps-4">Aeronave</label>
+                        <input type="text" class="form-control" formControlName="aircraft"
+                            placeholder="Agrega la aeronave" readonly (click)="modalAircraft.show()">
+                        <app-form-control-error formControlName="aircraft"></app-form-control-error>
+                    </div>
+                </div>
+                <div class="col-md-1 p-0">
+                    <button class="btn btn-icon btn-search" type="button" (click)="modalAircraft.show()">
+                        <i class="fas fa-search fa-2x "></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row pt-3 pb-5">
+        <div class="col-md-12">
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<div class="card">
+    <div class="card-header">
+        <h2>Viajes</h2>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-responsive table-striped hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Ubicación</th>
+                            <th>Fecha de salida</th>
+                            <th>Fecha de llegada</th>
+                            <th>Pasajeros</th>
+                            <th>Aeronave</th>
+                        </tr>
+                    </thead>
+                    <tbody #row>
+                        <tr *ngFor="let item of rentList; let i=index">
+                            <td>{{item?.id}}</td>
+                            <td>{{item?.location}}</td>
+                            <td>{{item?.departureDate | date: 'dd/MM/yyyy' }}</td>
+                            <td>{{item?.arrivalDate | date: 'dd/MM/yyyy'}} </td>
+                            <td>{{item?.passengerDesc}} </td>
+                            <td>{{item?.aircraft?.name}} </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-modal #modalPassengers idModal="passenger">
+    <h3 modalHeader>Selecciona los pasajeros</h3>
+    <div modalBody>
+        <div class="row ps-3" *ngFor="let user of userList">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" [id]="'disabledFieldsetCheck'+user.id"
+                    [checked]="user?.checked" [(ngModel)]="user.checked">
+                <label class="form-check-label" [for]="'disabledFieldsetCheck'+user.id">
+                    {{user.username}}
+                </label>
+            </div>
+        </div>
+    </div>
+    <div modalFooter>
+        <button modalFooter class="btn btn-primary" (click)="addNamePassenger()">Agregar</button>
+    </div>
+</app-modal>
+
+<app-modal #modalAircraft idModal="aircraft">
+    <h3 modalHeader>Selecciona la Aeronave</h3>
+    <div modalBody>
+        <div class="row ">
+            <div class="form-check" *ngFor="let item of aircraftList">
+                <input class="form-check-input" type="radio" [id]="'aircraft_'+item.id" [value]="item"
+                    [(ngModel)]="aircraft">
+                <label class="form-check-label" [for]="'aircraft_'+item.id">
+                    {{item.name}}
+                </label>
+            </div>
+        </div>
+    </div>
+    <div modalFooter>
+        <button modalFooter class="btn btn-primary" (click)="addNameAirCraftSelected()">Seleccionar</button>
+    </div>
+</app-modal>

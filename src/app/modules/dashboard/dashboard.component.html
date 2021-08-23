@@ -1,0 +1,27 @@
+<div class="card">
+    <div class="card-header">
+        <h2>Usuarios registrados</h2>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-responsive table-striped hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre de usuario</th>
+                            <th>Rol</th>
+                        </tr>
+                    </thead>
+                    <tbody #row>
+                        <tr *ngFor="let item of userList; let i=index">
+                            <td>{{item?.id}}</td>
+                            <td>{{item?.username}}</td>
+                            <td>{{item?.rolesDesc }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

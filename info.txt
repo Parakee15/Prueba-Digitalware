@@ -1,0 +1,10 @@
+Login
+Roles: 
+    Admintrador  -> ver viajes registrados
+        -> crud aviones
+    Astronauta  -> alquiler de aeronaves
+modulos 
+    1.Auth
+    2.Administracion Aereonaves -> CRUD
+    3.Alquiler -> registro -> consulta 
+    4.Dashboard
