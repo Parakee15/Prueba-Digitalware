@@ -9,9 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
@@ -44,11 +42,16 @@ public class UserController {
         }
         user.setStatus(true);
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        List<Role> roles = new ArrayList<>();
+        Role rol = new Role();
+        rol.setId(2L);
+        roles.add(rol);
+        user.setRoles(roles);
         response.put("id", userService.save(user).getId());
         return new ResponseEntity(response, HttpStatus.CREATED);
     }
 
-    @GetMapping ("/role/{id}")
+    @GetMapping("/role/{id}")
     public ResponseEntity getByRole(@PathVariable("id") Long id) {
         Map<String, Object> response = new HashMap();
         Role rol = new Role();

@@ -20,7 +20,6 @@ public class UserAuth implements Serializable {
     @Column(unique = true, length = 25)
     private String username;
 
-    @JsonIgnore
     @Column(length = 100)
     private String password;
 
